@@ -6,6 +6,7 @@ menuconfig COREUTILS
 	select LIBC_M		if COREUTILS_SORT
 	select LIBC_RT
 	select GCCLIBS_GCC_S
+	select ATTR		if COREUTILS_XATTR
 	select SYSTEMD		if COREUTILS_SYSTEMD
 	help
 	  This package contains the essential basic system utilities.
@@ -784,6 +785,12 @@ config COREUTILS_NICE
 
 comment "busybox' nice is selected!"
 	depends on BUSYBOX_NICE
+
+config COREUTILS_XATTR
+	bool
+	prompt "Extended attributes (xattr) support"
+	help
+	  Add support for extended attributes handling to coreutils tools.
 
 endif
 

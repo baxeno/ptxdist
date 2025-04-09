@@ -143,7 +143,7 @@ COREUTILS_CONF_OPT	:= \
 	--disable-acl \
 	--disable-assert \
 	--disable-rpath \
-	--disable-xattr \
+	--$(call ptx/endis, PTXCONF_COREUTILS_XATTR)-xattr \
 	--$(call ptx/endis, PTXCONF_COREUTILS_SYSTEMD)-systemd \
 	--disable-libsmack \
 	--disable-libcap \
