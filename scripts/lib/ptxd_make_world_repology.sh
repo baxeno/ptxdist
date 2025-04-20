@@ -39,6 +39,7 @@ ptxd_make_world_repology() {
 	pkg_license=$(grep '^[^ 	]*_LICENSE[ 	:]*=' "${file}" | cut -d '=' -f 2 | xargs)
 
 	[[ "$pkg_license" == *"call remove_quotes"* ]] && continue
+	[[ "$pkg_license" == "ignore" ]] && continue
 	[[ "$pkg_version" == *"call ptx/"* ]] && continue
 
 	if [ $first -eq 1 ]; then
