@@ -40,6 +40,8 @@ ptxd_make_world_repology() {
 
 	[[ "$pkg_license" == *"call remove_quotes"* ]] && continue
 	[[ "$pkg_license" == "ignore" ]] && continue
+	[[ "$pkg_license" == '$('* ]] && continue
+	[[ "$pkg_version" == '$('* ]] && continue
 	[[ "$pkg_version" == *"call ptx/"* ]] && continue
 
 	if [ $first -eq 1 ]; then
