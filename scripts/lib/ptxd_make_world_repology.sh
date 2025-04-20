@@ -34,8 +34,8 @@ ptxd_make_world_repology() {
 	esac
 	grep -q '^[^ 	]*_VERSION[ 	:]*=' "${file}" || continue
 
-	pkg_name=$(grep '^PACKAGES-$(PTXCONF_' "${file}" | cut -d '=' -f 2 | xargs)
-	pkg_version=$(grep '^[^ 	]*_VERSION[ 	:]*=' "${file}" | cut -d '=' -f 2 | xargs)
+	pkg_name=$(grep -m1 '^PACKAGES-$(PTXCONF_' "${file}" | cut -d '=' -f 2 | xargs)
+	pkg_version=$(grep -m1 '^[^ 	]*_VERSION[ 	:]*=' "${file}" | cut -d '=' -f 2 | xargs)
 	pkg_license=$(grep '^[^ 	]*_LICENSE[ 	:]*=' "${file}" | cut -d '=' -f 2 | xargs)
 
 	[[ "$pkg_license" == *"call remove_quotes"* ]] && continue
