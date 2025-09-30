@@ -8,39 +8,8 @@
 #
 
 PTX_PACKAGES_IGNORE	:= \
-	at91bootstrap2 \
-	barebox \
-	barebox_mlo \
-	base \
-	binutils \
-	blspec-entry \
-	cross-dummy-strip \
 	cross-llvm \
-	cross-nasm \
-	cross-pkg-config-wrapper \
-	cryptodev-api \
-	gcclibs \
-	gdb \
-	gdbserver \
-	glibc \
-	initmethod-bbinit \
-	initmethod-systemd \
-	kernel \
-	kernel-fit \
-	kernel-header \
-	locales \
-	machine-id \
-	nodejs_packages \
-	os-release \
-	ptxdist-configs \
-	rc-once \
-	rootfs \
-	systemd-hwdb \
-	u-boot \
-	uclibc \
-	usr-rootfs \
-	x-load \
-	xorg-fonts
+	nodejs_packages
 
 PHONY += ptxdist-repology
 
@@ -68,7 +37,9 @@ ptx/repology-lastitem = \
 ptx/repology = \
 	$(info [) \
 	$(foreach pkg,$(ptx_packages_reported), \
-		$(call ptx/repology-item,$(pkg))$(ptx/nl)) \
+		$(if $(subst undefined,,$($(PTX_MAP_TO_PACKAGE_$(pkg))_VERSION)), \
+			$(if $($(PTX_MAP_TO_PACKAGE_$(pkg))_URL), \
+				$(call ptx/repology-item,$(pkg))$(ptx/nl),),)) \
 	$(call ptx/repology-lastitem,$(ptx_package_last)) \
 	$(info ])
 
