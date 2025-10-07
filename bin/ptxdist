@@ -799,6 +799,7 @@ Misc:
 				variable and print the contents of this variable
   licensecheck			check md5sums of license files for all packages
   lint				run some basic checks for the bsp and PTXdist
+  repology			generate repology JSON for PTXdist
   list-packages			print a list of all selected packages
   local-src <pkg> [<directory>]	overwrite a package source with a locally provided
 				directory containing the sourcecode.
@@ -1928,6 +1929,11 @@ EOF
 			if [ -e "${PTXDIST_TEMPDIR}/lint-failed" ]; then
 				ptxd_bailout "lint checks failed"
 			fi
+			;;
+		repology)
+			check_premake_compiler &&
+			ptxd_make_log ptxdist-repology
+			exit
 			;;
 		list-packages)
 			check_config &&
