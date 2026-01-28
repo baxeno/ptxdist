@@ -108,11 +108,6 @@ OPEN62541_CONF_OPT	:= \
 	-DUA_NAMESPACE_ZERO=FULL \
 	-DUA_NODESET_DIR="$(PTXDIST_SYSROOT_HOST)/usr/share/ua-nodeset" \
 	-DUA_PACK_DEBIAN=OFF
-	-DUA_LOGLEVEL=$(OPEN62541_LOGLEVEL) \
-	-DUA_MSVC_FORCE_STATIC_CRT=OFF \
-	-DUA_NAMESPACE_ZERO=FULL \
-	-DUA_NODESET_DIR="$(PTXDIST_SYSROOT_HOST)/usr/share/ua-nodeset" \
-	-DUA_PACK_DEBIAN=OFF
 
 # ----------------------------------------------------------------------------
 # Target-Install
