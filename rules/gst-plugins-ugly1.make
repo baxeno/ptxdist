@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_GST_PLUGINS_UGLY1) += gst-plugins-ugly1
 #
 # Paths and names
 #
-GST_PLUGINS_UGLY1_VERSION	:= 1.26.9
-GST_PLUGINS_UGLY1_MD5		:= 07cbf09e536acdbe603a1935dbffc352
+GST_PLUGINS_UGLY1_VERSION	:= 1.28.0
+GST_PLUGINS_UGLY1_MD5		:= fa9358af941324d6134cdd1bffc1354b
 GST_PLUGINS_UGLY1		:= gst-plugins-ugly-$(GST_PLUGINS_UGLY1_VERSION)
 GST_PLUGINS_UGLY1_SUFFIX	:= tar.xz
 GST_PLUGINS_UGLY1_URL		:= https://gstreamer.freedesktop.org/src/gst-plugins-ugly/$(GST_PLUGINS_UGLY1).$(GST_PLUGINS_UGLY1_SUFFIX)
@@ -53,6 +53,7 @@ GST_PLUGINS_UGLY1_CONF_OPT	= \
 	$(call GSTREAMER1_GENERIC_CONF_OPT,GStreamer Ugly Plug-ins) \
 	-Dgpl=$(call ptx/endis,PTXCONF_GST_PLUGINS_UGLY1_MPEG2DEC)d \
 	-Dnls=disabled \
+	-Dorc-compiler=disabled \
 	-Dx264_libraries=
 
 ifneq ($(call remove_quotes,$(GST_PLUGINS_UGLY1_ENABLEC-y)),)
