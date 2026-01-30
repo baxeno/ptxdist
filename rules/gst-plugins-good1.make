@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_GST_PLUGINS_GOOD1) += gst-plugins-good1
 #
 # Paths and names
 #
-GST_PLUGINS_GOOD1_VERSION	:= 1.26.9
-GST_PLUGINS_GOOD1_MD5		:= 954ca98c961c26cd89c4a8ea02318e05
+GST_PLUGINS_GOOD1_VERSION	:= 1.28.0
+GST_PLUGINS_GOOD1_MD5		:= 17e79978b23fcece4de6f38c864e7f3d
 GST_PLUGINS_GOOD1		:= gst-plugins-good-$(GST_PLUGINS_GOOD1_VERSION)
 GST_PLUGINS_GOOD1_SUFFIX	:= tar.xz
 GST_PLUGINS_GOOD1_URL		:= https://gstreamer.freedesktop.org/src/gst-plugins-good/$(GST_PLUGINS_GOOD1).$(GST_PLUGINS_GOOD1_SUFFIX)
@@ -119,8 +119,7 @@ GST_PLUGINS_GOOD1_ENABLE-$(PTXCONF_GST_PLUGINS_GOOD1_WAVPACK)		+= wavpack
 GST_PLUGINS_GOOD1_ENABLE-$(PTXCONF_GST_PLUGINS_GOOD1_WAVPARSE)		+= wavparse
 GST_PLUGINS_GOOD1_ENABLE-$(PTXCONF_GST_PLUGINS_GOOD1_XIMAGESRC)		+= ximagesrc
 GST_PLUGINS_GOOD1_ENABLE-$(PTXCONF_GST_PLUGINS_GOOD1_XINGMUX)		+= xingmux
-GST_PLUGINS_GOOD1_ENABLEC-$(PTXCONF_GST_PLUGINS_GOOD1_Y4M)		+= y4m
-GST_PLUGINS_GOOD1_ENABLEP-$(PTXCONF_GST_PLUGINS_GOOD1_Y4M)		+= y4menc
+GST_PLUGINS_GOOD1_ENABLE-$(PTXCONF_GST_PLUGINS_GOOD1_Y4M)		+= y4m
 
 GST_PLUGINS_GOOD1_ENABLEC-	+= $(GST_PLUGINS_GOOD1_ENABLE-)
 GST_PLUGINS_GOOD1_ENABLEC-y	+= $(GST_PLUGINS_GOOD1_ENABLE-y)
@@ -154,12 +153,15 @@ GST_PLUGINS_GOOD1_CONF_OPT	= \
 	-Dhls-crypto=$(call remove_quotes, $(PTXCONF_GST_PLUGINS_GOOD1_HLS_CRYPTO)) \
 	-Dnls=disabled \
 	-Dorc=$(call ptx/endis,PTXCONF_GST_PLUGINS_GOOD1_ORC)d \
+	-Dorc-compiler=$(call ptx/endis,PTXCONF_GST_PLUGINS_GOOD1_ORC)d \
 	-Dosxaudio=disabled \
 	-Dosxvideo=disabled \
+	-Dqt-egl=$(call ptx/endis,PTXCONF_GST_PLUGINS_GOOD1_QT_EGL)d \
 	-Dqt-method=pkg-config \
+	-Dqt-wayland=$(call ptx/endis,PTXCONF_GST_PLUGINS_GOOD1_QT_WAYLAND)d \
+	-Dqt-x11=disabled \
 	-Drpi-header-dir= \
 	-Drpi-lib-dir= \
-	-Drpicamsrc=disabled \
 	-Dsoup-lookup-dep=false \
 	-Dsoup-version=3 \
 	-Dv4l2-gudev=$(call ptx/endis,PTXCONF_GST_PLUGINS_GOOD1_V4L2)d \
