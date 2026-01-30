@@ -335,13 +335,17 @@ config GST_PLUGINS_BAD1_VIDEOSIGNAL
 	bool
 	prompt "videosignal"
 
+config GST_PLUGINS_BAD1_VMAF
+	bool
+	# needs libvmaf
+	depends on BROKEN
+	prompt "vmaf"
+	help
+	  Netflix VMAF image quality assessment plugin
+
 config GST_PLUGINS_BAD1_VMNC
 	bool
 	prompt "vmnc"
-
-config GST_PLUGINS_BAD1_Y4M
-	bool
-	prompt "y4m"
 
 comment "plugins with dependencies"
 
@@ -567,6 +571,12 @@ config GST_PLUGINS_BAD1_GTK3
 	help
 	  GTK+ video sink plugin
 
+config GST_PLUGINS_BAD1_HIP
+	bool
+	prompt "HIP"
+	help
+	  AMD HIP plugin
+
 config GST_PLUGINS_BAD1_HLS
 	bool
 	prompt "hls"
@@ -687,6 +697,14 @@ config GST_PLUGINS_BAD1_MPEG2ENC
 	help
 	  mpeg2enc video encoder plugin
 
+config GST_PLUGINS_BAD1_MPEGHDEC
+	bool
+	# needs mpeghdec
+	depends on BROKEN
+	prompt "mpeghdec"
+	help
+	  MPEG-H audio decoder plugin
+
 config GST_PLUGINS_BAD1_MPLEX
 	bool
 	# needs mjpegtools & mplex2
@@ -726,6 +744,14 @@ config GST_PLUGINS_BAD1_NVCODEC
 	prompt "nvcodec"
 	help
 	  NVIDIA GPU codec plugin
+
+config GST_PLUGINS_BAD1_NVCOMP
+	bool
+	# needs NVIDIA nvCOMP SDK
+	depends on BROKEN
+	prompt "nvcomp"
+	help
+	  NVIDIA nvCOMP compression/decompression plugin
 
 config GST_PLUGINS_BAD1_NVDSWRAPPER
 	bool
@@ -941,6 +967,14 @@ config GST_PLUGINS_BAD1_TENSORDECODERS
 	help
 	  Tensordecoders plugin
 
+config GST_PLUGINS_BAD1_TFLITE
+	bool
+	# needs tflite
+	depends on BROKEN
+	prompt "tflite"
+	help
+	  TensorFlow Lite (LiteRT) plugin
+
 config GST_PLUGINS_BAD1_TINYALSA
 	bool
 	# needs tinyalsa
@@ -1046,6 +1080,14 @@ config GST_PLUGINS_BAD1_WPE
 	# needs wpe-webkit
 	depends on BROKEN
 	prompt "wpe"
+	help
+	  WPE Web browser plugin
+
+config GST_PLUGINS_BAD1_WPE2
+	bool
+	# needs wpe-webkit
+	depends on BROKEN
+	prompt "wpe2"
 	help
 	  WPE Web browser plugin
 
