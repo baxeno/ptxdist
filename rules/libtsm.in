@@ -1,0 +1,11 @@
+## SECTION=system_libraries
+
+config LIBTSM
+	tristate
+	select HOST_MESON
+	select LIBXKBCOMMON
+	prompt "libtsm"
+	help
+	  Terminal-emulator State Machine
+
+# vim: ft=kconfig tw=80
