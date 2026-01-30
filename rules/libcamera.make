@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_LIBCAMERA) += libcamera
 #
 # Paths and names
 #
-LIBCAMERA_VERSION	:= 0.6.0
-LIBCAMERA_MD5		:= 1c4ce91a4a4f24bc6ff633723d59bd2d
+LIBCAMERA_VERSION	:= 0.7.0
+LIBCAMERA_MD5		:= bc0b8b2f8210d8c4de607ecc8c9bbec4
 LIBCAMERA		:= libcamera-$(LIBCAMERA_VERSION)
 LIBCAMERA_SUFFIX	:= tar.gz
 LIBCAMERA_URL		:= https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$(LIBCAMERA_VERSION)/$(LIBCAMERA).$(LIBCAMERA_SUFFIX)
@@ -90,10 +90,11 @@ LIBCAMERA_CONF_OPT	:= \
 	-Dpipelines=$(subst $(ptx/def/space),$(ptx/def/comma),$(strip $(LIBCAMERA_PIPELINES-y))) \
 	-Dpycamera=disabled \
 	-Dqcam=$(call ptx/endis,PTXCONF_LIBCAMERA_QCAM)d \
+	-Drpi-awb-nn=disabled \
 	-Dtest=false \
 	-Dtracing=disabled \
 	-Dudev=enabled \
-	-Dv4l2=false
+	-Dv4l2=disabled
 
 # ----------------------------------------------------------------------------
 # Target-Install
