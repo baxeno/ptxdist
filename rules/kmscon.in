@@ -1,0 +1,57 @@
+## SECTION=shell_and_console
+
+menuconfig KMSCON
+	tristate
+	select HOST_MESON
+	#select HOST_PYTHON3
+	select LIBDRM
+	select LIBTSM
+	select LIBXKBCOMMON
+	select SYSTEMD			if KMSCON_MULTI_SEAT
+	select SYSTEMD_LOGIND		if KMSCON_MULTI_SEAT && RUNTIME
+	select MESALIB			if KMSCON_DRM3D || KMSCON_GLTEX
+	select MESALIB_GBM		if KMSCON_DRM3D
+	select MESALIB_EGL		if KMSCON_DRM3D
+	select MESALIB_GLES2		if KMSCON_DRM3D || KMSCON_GLTEX
+	select PANGO			if KMSCON_PANGO
+	select UDEV
+	select UDEV_LIBUDEV
+	prompt "kmscon                        "
+	help
+	  Linux KMS/DRM based virtual Console Emulator
+
+if KMSCON
+
+config KMSCON_DRM3D
+	bool
+	prompt "drm3d"
+	help
+	  drm2d video backend
+
+config KMSCON_GLTEX
+	bool
+	prompt "gltex"
+	help
+	  gltex renderer
+
+config KMSCON_MULTI_SEAT
+	bool
+	prompt "multi-seat"
+	help
+	  Multi-seat support with systemd
+
+config KMSCON_PANGO
+	bool
+	prompt "pango"
+	help
+	  pango font backend
+
+config KMSCON_UNIFONT
+	bool
+	prompt "unifont"
+	help
+	  unifont font backend
+
+endif
+
+# vim: ft=kconfig tw=80
