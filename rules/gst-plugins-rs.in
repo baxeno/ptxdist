@@ -10,8 +10,9 @@ menuconfig GST_PLUGINS_RS
 	select HOST_SYSTEM_PYTHON3_TOMLI
 	select GSTREAMER1
 	select GST_PLUGINS_BASE1
-	select GST_PLUGINS_BAD1		if GST_PLUGINS_RS_WEBRTC || GST_PLUGINS_RS_WEBRTCHTTP || GST_PLUGINS_RS_RELATIONMETA
+	select GST_PLUGINS_BAD1		if GST_PLUGINS_RS_WEBRTC || GST_PLUGINS_RS_WEBRTCHTTP || GST_PLUGINS_RS_ANALYTICS
 	select GST_PLUGINS_BAD1_WEBRTC	if GST_PLUGINS_RS_WEBRTC || GST_PLUGINS_RS_WEBRTCHTTP
+	select GST_DEVTOOLS1		if GST_PLUGINS_RS_VALIDATE
 	select LIBWEBP			if GST_PLUGINS_RS_WEBP
 	select LIBWEBP_DEMUX		if GST_PLUGINS_RS_WEBP
 	select PANGO			if GST_PLUGINS_RS_ONVIF || GST_PLUGINS_RS_CLOSEDCAPTION
@@ -23,13 +24,25 @@ menuconfig GST_PLUGINS_RS
 
 if GST_PLUGINS_RS
 
+config GST_PLUGINS_RS_ANALYTICS
+	bool
+	prompt "analytics"
+
 config GST_PLUGINS_RS_AUDIOFX
 	bool
 	prompt "audiofx"
 
+config GST_PLUGINS_RS_AUDIOPARSERS
+	bool
+	prompt "audioparsers"
+
 config GST_PLUGINS_RS_AWS
 	bool
 	prompt "aws"
+
+config GST_PLUGINS_RS_BURN
+	bool
+	prompt "burn"
 
 config GST_PLUGINS_RS_CDG
 	bool
@@ -55,6 +68,18 @@ config GST_PLUGINS_RS_DAV1D
 	depends on BROKEN
 	prompt "dav1d"
 
+config GST_PLUGINS_RS_DEEPGRAM
+	bool
+	prompt "deepgram"
+
+config GST_PLUGINS_RS_DEMUCS
+	bool
+	prompt "demucs"
+
+config GST_PLUGINS_RS_ELEVENLABS
+	bool
+	prompt "elevenlabs"
+
 config GST_PLUGINS_RS_FALLBACKSWITCH
 	bool
 	prompt "fallbackswitch"
@@ -70,10 +95,6 @@ config GST_PLUGINS_RS_FILE
 config GST_PLUGINS_RS_FLAVORS
 	bool
 	prompt "flavors"
-
-config GST_PLUGINS_RS_FMP4
-	bool
-	prompt "fmp4"
 
 config GST_PLUGINS_RS_GIF
 	bool
@@ -101,9 +122,17 @@ config GST_PLUGINS_RS_HSV
 	bool
 	prompt "hsv"
 
+config GST_PLUGINS_RS_ICECAST
+	bool
+	prompt "icecast"
+
 config GST_PLUGINS_RS_INTER
 	bool
 	prompt "inter"
+
+config GST_PLUGINS_RS_ISOBMFF
+	bool
+	prompt "isobmff"
 
 config GST_PLUGINS_RS_JSON
 	bool
@@ -120,10 +149,6 @@ config GST_PLUGINS_RS_LIVESYNC
 config GST_PLUGINS_RS_MPEGTSLIVE
 	bool
 	prompt "mpegtslive"
-
-config GST_PLUGINS_RS_MP4
-	bool
-	prompt "mp4"
 
 config GST_PLUGINS_RS_NDI
 	bool
@@ -157,10 +182,6 @@ config GST_PLUGINS_RS_REGEX
 	bool
 	prompt "regex"
 
-config GST_PLUGINS_RS_RELATIONMETA
-	bool
-	prompt "relationmeta"
-
 config GST_PLUGINS_RS_REQWEST
 	bool
 	prompt "reqwest"
@@ -172,6 +193,12 @@ config GST_PLUGINS_RS_RTP
 config GST_PLUGINS_RS_RTSP
 	bool
 	prompt "rtsp"
+
+config GST_PLUGINS_RS_SKIA
+	bool
+	# tries to download stuff at build time
+	depends on BROKEN
+	prompt "skia"
 
 config GST_PLUGINS_RS_SPEECHMATICS
 	bool
@@ -188,6 +215,10 @@ config GST_PLUGINS_RS_SPOTIFY
 config GST_PLUGINS_RS_STREAMGROUPER
 	bool
 	prompt "streamgrouper"
+
+config GST_PLUGINS_RS_TEXTACCUMULATE
+	bool
+	prompt "textaccumulate"
 
 config GST_PLUGINS_RS_TEXTAHEAD
 	bool
@@ -212,6 +243,10 @@ config GST_PLUGINS_RS_TRACERS
 config GST_PLUGINS_RS_URIPLAYLISTBIN
 	bool
 	prompt "uriplaylistbin"
+
+config GST_PLUGINS_RS_VALIDATE
+	bool
+	prompt "validate"
 
 config GST_PLUGINS_RS_VIDEOFX
 	bool

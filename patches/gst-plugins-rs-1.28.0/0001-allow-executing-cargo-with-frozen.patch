@@ -10,19 +10,19 @@ Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
  3 files changed, 10 insertions(+)
 
 diff --git a/cargo_wrapper.py b/cargo_wrapper.py
-index c169045cc13c..8116600ba8d7 100644
+index b62ed4278605..97d801907ea4 100755
 --- a/cargo_wrapper.py
 +++ b/cargo_wrapper.py
-@@ -28,6 +28,7 @@ PARSER.add_argument('--lib-suffixes', nargs="+", default=[])
- PARSER.add_argument('--exe-suffix')
- PARSER.add_argument('--depfile')
- PARSER.add_argument('--disable-doc', action="store_true", default=False)
+@@ -34,6 +34,7 @@ PARSER.add_argument('--depfile', type=P)
+ PARSER.add_argument('--target-dir', type=P, default=None)
+ PARSER.add_argument('--disable-doc', action='store_true', default=False)
+ PARSER.add_argument('--build-tests', action='store_true', default=False)
 +PARSER.add_argument('--frozen', action="store_true", default=False)
  
  
  def shlex_join(args):
-@@ -122,6 +123,9 @@ if __name__ == "__main__":
-         print("Unknown command:", opts.command, file=logfile)
+@@ -284,6 +285,9 @@ if __name__ == '__main__':
+         print('Unknown command:', opts.command, file=logfile)
          sys.exit(1)
  
 +    if opts.frozen:
@@ -32,10 +32,10 @@ index c169045cc13c..8116600ba8d7 100644
          cargo_cmd += ['--target', rustc_target]
      if features:
 diff --git a/meson.build b/meson.build
-index f4e69ca1d293..13f7282bb349 100644
+index 50ac870fe5f9..d7299aa034c3 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -546,6 +546,10 @@ if get_option('doc').disabled()
+@@ -649,6 +649,10 @@ if get_option('doc').disabled()
    extra_args += ['--disable-doc']
  endif
  
@@ -47,12 +47,12 @@ index f4e69ca1d293..13f7282bb349 100644
  pkg_config = find_program('pkgconfig', 'pkg-config')
  if pkg_config.found()
 diff --git a/meson_options.txt b/meson_options.txt
-index d75770ee411b..ec17061c8769 100644
+index 55cfc13173f2..645b2e67d05e 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
-@@ -77,3 +77,5 @@ option('examples', type: 'feature', value: 'disabled', yield: true,
-        description: 'Build examples')
- option('tests', type : 'feature', value : 'auto', yield : true,
+@@ -89,3 +89,5 @@ option('tests', type : 'feature', value : 'auto', yield : true,
         description : 'Build and enable unit tests')
+ option('auto_plugin_features', type: 'feature', value: 'auto',
+        description: 'Override value of all auto plugin features')
 +option('frozen', type: 'boolean', value: false,
 +       description: 'Run cargo with --frozen')
