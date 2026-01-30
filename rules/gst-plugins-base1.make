@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_GST_PLUGINS_BASE1) += gst-plugins-base1
 #
 # Paths and names
 #
-GST_PLUGINS_BASE1_VERSION	:= 1.26.9
-GST_PLUGINS_BASE1_MD5		:= d4877f82463c3f4f441a15f2a0d2b069
+GST_PLUGINS_BASE1_VERSION	:= 1.28.0
+GST_PLUGINS_BASE1_MD5		:= 748eb0ae9679284558136b55244c2b8f
 GST_PLUGINS_BASE1		:= gst-plugins-base-$(GST_PLUGINS_BASE1_VERSION)
 GST_PLUGINS_BASE1_SUFFIX	:= tar.xz
 GST_PLUGINS_BASE1_URL		:= https://gstreamer.freedesktop.org/src/gst-plugins-base/$(GST_PLUGINS_BASE1).$(GST_PLUGINS_BASE1_SUFFIX)
@@ -131,6 +131,8 @@ GST_PLUGINS_BASE1_CONF_OPT	= \
 	-Dnls=disabled \
 	-Dopengl_module_name=libGL \
 	-Dorc=enabled \
+	-Dorc-compiler=enabled \
+	-Dqt-method=pkg-config \
 	-Dqt5=disabled \
 	-Dtools=$(call ptx/endis, PTXCONF_GST_PLUGINS_BASE1_INSTALL_TOOLS)d \
 	-Dx11=$(call ptx/endis, PTXCONF_GST_PLUGINS_BASE1_X11)d
