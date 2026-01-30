@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_LIBNICE) += libnice
 #
 # Paths and names
 #
-LIBNICE_VERSION	:= 0.1.21
-LIBNICE_MD5	:= fe43ff9ed4db2ecbb2d480c670bee855
+LIBNICE_VERSION	:= 0.1.23
+LIBNICE_MD5	:= 5a8dd55fed6b6a2fdb17b6cfd2d0c55b
 LIBNICE		:= libnice-$(LIBNICE_VERSION)
 LIBNICE_SUFFIX	:= tar.gz
 LIBNICE_URL	:= https://libnice.freedesktop.org/releases/$(LIBNICE).$(LIBNICE_SUFFIX)
