@@ -84,6 +84,9 @@ DB_CONF_OPT	:= \
 	--disable-cryptography \
 	--with-mutex=POSIX/pthreads/private
 
+DB_CFLAGS	:= \
+	-Wno-incompatible-pointer-types
+
 # ----------------------------------------------------------------------------
 # Target-Install
 # ----------------------------------------------------------------------------
