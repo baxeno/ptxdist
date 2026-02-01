@@ -25,18 +25,12 @@ $(STATEDIR)/%.get:
 	@$(call targetinfo)
 	@$(foreach part,$($(PTX_MAP_TO_PACKAGE_$(*))_PARTS), \
 		$(call world/get, $(part))$(ptx/nl))
-	@$(foreach part,$($(PTX_MAP_TO_PACKAGE_$(*))_PARTS), \
-		$(call world/check_src, $(part))$(ptx/nl))
 	@$(call touch)
 
 world/get = \
 	$(call world/env, $(1)) \
 	ptxd_make_get_mirror=$(PTXCONF_SETUP_PTXMIRROR) \
 	ptxd_make_world_get
-
-world/check_src = \
-	$(call world/env, $(1)) \
-	ptxd_make_world_check_src
 
 $(STATEDIR)/%.urlcheck:
 	@$(call targetinfo)

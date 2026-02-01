@@ -51,24 +51,3 @@ ptxd_make_world_update_md5() {
     ptxd_warning "New checksum for ${pkg_PKG}: ${md5} in $(ptxd_print_path "${pkg_makefile}")"
 }
 export -f ptxd_make_world_update_md5
-
-#
-# verify the md5sum of the source file of the current package
-#
-ptxd_make_world_check_src() {
-    ptxd_make_world_init &&
-
-    if [ -z "${pkg_src}" ]; then
-	return
-    fi
-    ptxd_make_check_src_impl "${pkg_src}" "${pkg_md5}" && return
-
-    if [ "${PTXCONF_SETUP_CHECK}" = "update" ]; then
-	ptxd_make_world_update_md5
-    elif [ -z "${pkg_md5}" ]; then
-	ptxd_bailout "md5sum for '${pkg_label}' (${pkg_src}) missing."
-    else
-	ptxd_bailout "Wrong md5sum for '${pkg_label}' (${pkg_src})"
-    fi
-}
-export -f ptxd_make_world_check_src
