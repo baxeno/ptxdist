@@ -19,7 +19,7 @@ Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
  1 file changed, 32 insertions(+), 3 deletions(-)
 
 diff --git a/crypto/conf/conf_ssl.c b/crypto/conf/conf_ssl.c
-index 84c5b2afe581..d6596e60c3b5 100644
+index c8796715c00e..2e152a1c0c2c 100644
 --- a/crypto/conf/conf_ssl.c
 +++ b/crypto/conf/conf_ssl.c
 @@ -12,6 +12,7 @@
@@ -85,7 +85,7 @@ index 84c5b2afe581..d6596e60c3b5 100644
      ssl_conf_section = CONF_imodule_get_value(md);
      cmd_lists = NCONF_get_section(cnf, ssl_conf_section);
      if (sk_CONF_VALUE_num(cmd_lists) <= 0) {
-@@ -77,7 +105,7 @@ static int ssl_module_init(CONF_IMODULE *md, const CONF *cnf)
+@@ -76,7 +104,7 @@ static int ssl_module_init(CONF_IMODULE *md, const CONF *cnf)
          goto err;
      }
      cnt = sk_CONF_VALUE_num(cmd_lists);
@@ -94,9 +94,9 @@ index 84c5b2afe581..d6596e60c3b5 100644
      ssl_names = OPENSSL_zalloc(sizeof(*ssl_names) * cnt);
      if (ssl_names == NULL)
          goto err;
-@@ -126,7 +154,8 @@ static int ssl_module_init(CONF_IMODULE *md, const CONF *cnf)
+@@ -123,7 +151,8 @@ static int ssl_module_init(CONF_IMODULE *md, const CONF *cnf)
      rv = 1;
-  err:
+ err:
      if (rv == 0)
 -        ssl_module_free(md);
 +        ssl_module_free_unlocked(md);
