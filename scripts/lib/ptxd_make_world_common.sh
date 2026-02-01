@@ -289,7 +289,7 @@ ptxd_make_world_init() {
     # a directory, use this instead of the real one.
     #
     local wip_sources="${PTXDIST_WORKSPACE}/local_src/${pkg_label}${PTXDIST_PLATFORMSUFFIX}"
-    if [ -d "$(readlink -f "${wip_sources}")" ]; then
+    if [ -d "${wip_sources}" ]; then
 	pkg_url="file://${wip_sources}"
 	unset pkg_src
 	# always use a new timestamp for wip builds
