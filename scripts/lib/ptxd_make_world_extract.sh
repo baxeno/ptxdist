@@ -125,7 +125,7 @@ ptxd_make_world_extract_cargo_crate() {
 export -f ptxd_make_world_extract_cargo_crate
 
 ptxd_make_world_extract_cargo() {
-    local src vendor_cargo_workspace_package
+    local src
     echo "extract: cargo dependencies:"
     rm -rf "${pkg_cargo_home}" &&
     mkdir -p "${pkg_cargo_home}/source" &&

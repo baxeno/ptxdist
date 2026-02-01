@@ -160,6 +160,7 @@ export -f ptxd_make_world_prepare_meson
 # prepare for cargo based pkgs
 #
 ptxd_make_world_prepare_cargo_check() {
+    local vendor_cargo_workspace_package
     local crate workspace count=0
     local -a tmp cargo_lock
     local pkg_makefile_cargo="${pkg_makefile%.make}.cargo.make"
