@@ -17,8 +17,8 @@ PACKAGES-$(PTXCONF_PROCPS) += procps
 #
 # Paths and names
 #
-PROCPS_VERSION	:= 4.0.5
-PROCPS_MD5	:= 90803e64f51f192f3325d25c3335d057
+PROCPS_VERSION	:= 4.0.6
+PROCPS_MD5	:= 20c23dc3dd1569a2bb1d1fa93de213ed
 PROCPS		:= procps-ng-$(PROCPS_VERSION)
 PROCPS_SUFFIX	:= tar.xz
 PROCPS_URL	:= $(call ptx/mirror, SF, procps-ng/Production/$(PROCPS).$(PROCPS_SUFFIX))
@@ -41,10 +41,12 @@ PROCPS_CONF_OPT	:= \
 	$(CROSS_AUTOCONF_USR) \
 	$(GLOBAL_LARGE_FILE_OPTION) \
 	--disable-nls \
+	--disable-assert \
 	--enable-shared \
 	--disable-static \
 	--disable-rpath \
 	--disable-watch8bit \
+	--disable-colorwatch \
 	--disable-libselinux \
 	--disable-harden-flags \
 	--$(call ptx/endis, PTXCONF_PROCPS_PIDOF)-pidof \
