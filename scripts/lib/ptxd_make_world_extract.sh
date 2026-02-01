@@ -102,25 +102,7 @@ ptxd_make_world_extract_cargo_crate() {
 	fi
 	return
     fi
-    mv "${abs_srcdir}" "${pkg_cargo_home}/workspaces/" &&
-    awk '
-/^members = \[$/ {
-    members = 1
-    next
-}
-/\]$/ {
-    members = 0
-}
-{
-    if (members != 1)
-	next
-	dir = gensub(/"(.*)"[,]?/, "\\1", 1, $1)
-	name = gensub(/\//, "-", "g", dir)
-	print dir, name
-}' "${pkg_cargo_home}/workspaces/${srcdir}/Cargo.toml" | while read dir name; do
-	ln -sf "../workspaces/${srcdir}/${dir}" "${pkg_cargo_home}/source/${name}"
-	printf '{"files": {}, "package": null}' > "${pkg_cargo_home}/source/${name}/.cargo-checksum.json"
-    done
+    mv "${abs_srcdir}" "${pkg_cargo_home}/workspaces/"
 }
 export -f ptxd_make_world_extract_cargo_crate
 

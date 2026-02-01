@@ -160,7 +160,7 @@ export -f ptxd_make_world_prepare_meson
 # prepare for cargo based pkgs
 #
 ptxd_make_world_prepare_cargo_check() {
-    local vendor_cargo_workspace_package
+    local vendor_cargo_workspace_package link_cargo_workspace_crates
     local crate workspace count=0
     local -a tmp cargo_lock
     local pkg_makefile_cargo="${pkg_makefile%.make}.cargo.make"
@@ -183,11 +183,20 @@ ptxd_make_world_prepare_cargo_check() {
     done &&
     ptxd_in_path PTXDIST_PATH_SCRIPTS vendor-cargo-workspace-package &&
     vendor_cargo_workspace_package="${ptxd_reply}" &&
+    ptxd_in_path PTXDIST_PATH_SCRIPTS link-cargo-workspace-crates &&
+    link_cargo_workspace_crates="${ptxd_reply}" &&
 
+    find "${pkg_cargo_home}/workspaces" -maxdepth 1 -mindepth 1 -type d -printf '%P\n' | while read srcdir; do
+    "${link_cargo_workspace_crates}" \
+	--input "${pkg_cargo_home}/workspaces/${srcdir}/Cargo.toml" \
+	--relative "../workspaces/${srcdir}" \
+	--destination "${pkg_cargo_home}/source"
+    done
     find "${pkg_cargo_home}/source" -maxdepth 1 -type l | while read link; do
 	crate="$(readlink "${link}")" &&
 	crate="${crate#../workspaces/}" &&
 	workspace="${pkg_cargo_home}/workspaces/${crate%%/*}" &&
+	echo "rewriting: ${crate}/Cargo.toml"
 	crate="${pkg_cargo_home}/workspaces/${crate}" &&
 	if [ -e "${link}/Cargo.toml.orig" ]; then
 	    # already handed during a previous prepare run
