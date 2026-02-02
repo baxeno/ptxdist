@@ -1,4 +1,6 @@
-## SECTION=networking
+## SECTION=staging
+## old section:
+### SECTION=networking
 config NETKIT_FTP
 	tristate
 	prompt "netkit ftp client"
@@ -7,4 +9,8 @@ config NETKIT_FTP
 	  See http://freshmeat.net/projects/netkit/ for details.
 
 	  License: BSD License (original)
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream seems to be dead, unmaintained in PTXist. Fails to build
+	  with gcc 15.
 
