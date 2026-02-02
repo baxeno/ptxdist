@@ -1,4 +1,6 @@
-## SECTION=communication
+## SECTION=staging
+## old section:
+### SECTION=communication
 config POP3SPAM
 	tristate
 	prompt "pop3spam"
@@ -7,3 +9,7 @@ config POP3SPAM
 	  pop3spam is a rudimentary POP3 client. It is normally supposed
 	  to delete spam in a POP3 box but also can be used to make
 	  pop-before-smtp calls.
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream seems to be dead, unmaintained in PTXist. Fails to build
+	  with gcc 15.
