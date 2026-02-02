@@ -1,5 +1,5 @@
 From: Mark Adler <madler@alumni.caltech.edu>
-Date: Sun, 2 Feb 2025 21:34:20 +0100
+Date: Mon, 2 Feb 2026 09:25:11 +0100
 Subject: [PATCH] Do not raise a zip bomb alert for a misplaced central
  directory.
 
@@ -14,7 +14,7 @@ Subject: [PATCH] Do not raise a zip bomb alert for a misplaced central
     raise a zip bomb alert, where in fact there are no overlaps.
 
 
-Imported from unzip_6.0-28.debian.tar.xz
+Imported from unzip_6.0-29.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---

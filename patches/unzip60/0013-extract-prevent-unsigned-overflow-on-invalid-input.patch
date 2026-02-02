@@ -4,7 +4,7 @@ Subject: [PATCH] extract: prevent unsigned overflow on invalid input
 
 Suggested-by: Stefan Cornelius
 
-Imported from unzip_6.0-28.debian.tar.xz
+Imported from unzip_6.0-29.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---

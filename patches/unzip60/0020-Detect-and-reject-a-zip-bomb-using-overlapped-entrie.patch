@@ -1,5 +1,5 @@
 From: Mark Adler <madler@alumni.caltech.edu>
-Date: Sun, 2 Feb 2025 21:34:20 +0100
+Date: Mon, 2 Feb 2026 09:25:11 +0100
 Subject: [PATCH] Detect and reject a zip bomb using overlapped entries.
 
     Detect and reject a zip bomb using overlapped entries.
@@ -26,11 +26,11 @@ Subject: [PATCH] Detect and reject a zip bomb using overlapped entries.
     undefer_input() that misplaced the input state."
 
 
-Imported from unzip_6.0-28.debian.tar.xz
+Imported from unzip_6.0-29.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---
- extract.c | 190 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ extract.c | 190 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
  globals.c |   1 +
  globals.h |   3 +
  process.c |  11 ++++

@@ -1,8 +1,8 @@
 From: Santiago Vila <sanvila@debian.org>
-Date: Sun, 2 Feb 2025 21:34:20 +0100
+Date: Mon, 2 Feb 2026 09:25:11 +0100
 Subject: [PATCH] zipinfo.c: Do not crash when hostver byte is >= 100
 
-Imported from unzip_6.0-28.debian.tar.xz
+Imported from unzip_6.0-29.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---

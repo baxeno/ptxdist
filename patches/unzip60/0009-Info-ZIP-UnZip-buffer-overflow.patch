@@ -1,5 +1,5 @@
 From: mancha <mancha1 AT zoho DOT com>
-Date: Sun, 2 Feb 2025 21:34:20 +0100
+Date: Mon, 2 Feb 2026 09:25:11 +0100
 Subject: [PATCH] Info-ZIP UnZip buffer overflow
 
 By carefully crafting a corrupt ZIP archive with "extra fields" that
@@ -12,7 +12,7 @@ This patch ensures that when extra fields use STORED mode, the
 "compressed" and uncompressed block sizes match.
 
 
-Imported from unzip_6.0-28.debian.tar.xz
+Imported from unzip_6.0-29.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---

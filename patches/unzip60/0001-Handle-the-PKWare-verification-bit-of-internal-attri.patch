@@ -1,8 +1,8 @@
 From: "Steven M. Schweda" <sms@antinode.info>
-Date: Sun, 2 Feb 2025 21:34:20 +0100
+Date: Mon, 2 Feb 2026 09:25:10 +0100
 Subject: [PATCH] Handle the PKWare verification bit of internal attributes
 
-Imported from unzip_6.0-28.debian.tar.xz
+Imported from unzip_6.0-29.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---
