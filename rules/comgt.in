@@ -1,7 +1,13 @@
-## SECTION=networking
+## SECTION=staging
+## old section:
+### SECTION=networking
 
 config COMGT
 	tristate
 	prompt "comgt"
 	help
 	  Linux UMTS/GPRS command-line tool
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream seems to be dead, unmaintained in PTXist. Fails to build
+	  with glibc 2.42.
