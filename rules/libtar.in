@@ -1,4 +1,6 @@
-## SECTION=system_libraries
+## SECTION=staging
+## old section:
+### SECTION=system_libraries
 
 config LIBTAR
 	tristate
@@ -7,5 +9,9 @@ config LIBTAR
 	help
 	  libtar is a C library for manipulating POSIX tar files. It handles
 	  adding and extracting files to/from a tar archive.
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream seems to be dead, unmaintained in PTXist. Fails to build
+	  with gcc 15.
 
 # vim: ft=kconfig noet tw=72
