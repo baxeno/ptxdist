@@ -16,8 +16,8 @@ endif
 #
 # Paths and names
 #
-F2FS_TOOLS_VERSION	:= 1.14.0
-F2FS_TOOLS_MD5		:= df05b251ce1e9966450bb801da91d7a3
+F2FS_TOOLS_VERSION	:= 1.16.0
+F2FS_TOOLS_MD5		:= 5b05b9331a18564c635b3bf8305c3910
 F2FS_TOOLS		:= f2fs-tools-$(F2FS_TOOLS_VERSION)
 F2FS_TOOLS_SUFFIX	:= tar.gz
 F2FS_TOOLS_URL		:= https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$(F2FS_TOOLS).$(F2FS_TOOLS_SUFFIX)
@@ -41,7 +41,10 @@ F2FS_TOOLS_CONF_ENV	:= \
 F2FS_TOOLS_CONF_TOOL	:= autoconf
 F2FS_TOOLS_CONF_OPT	:= \
 	$(CROSS_AUTOCONF_USR) \
-	--$(call ptx/wwo, PTXCONF_GLOBAL_SELINUX)-selinux
+	--$(call ptx/wwo, PTXCONF_GLOBAL_SELINUX)-selinux \
+	--with-blkid \
+	--without-lzo2 \
+	--without-lz4
 
 # ----------------------------------------------------------------------------
 # Target-Install
