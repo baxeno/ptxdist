@@ -1,4 +1,6 @@
-## SECTION=networking
+## SECTION=staging
+## old section:
+### SECTION=networking
 menuconfig RSYNC
 	tristate
 	prompt "rsync                         "
@@ -10,6 +12,9 @@ menuconfig RSYNC
 	  but has many more options and uses the rsync remote-update protocol to
 	  greatly speed up file transfers when the destination file is being
 	  updated.
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Fails to build with gcc 15. Use rsync3 instead.
 
 if RSYNC
 
