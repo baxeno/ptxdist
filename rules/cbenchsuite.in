@@ -1,4 +1,6 @@
-## SECTION=test_suites
+## SECTION=staging
+## old section:
+### SECTION=test_suites
 
 config CBENCHSUITE
 	tristate
@@ -12,3 +14,7 @@ config CBENCHSUITE
 	help
 	  cbenchsuite is a benchmark suite including plotter for high accuracy
 	  measurements. See http://cbenchsuite.org
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream seems to be dead, unmaintained in PTXist. Fails to build
+	  with gcc 15.
