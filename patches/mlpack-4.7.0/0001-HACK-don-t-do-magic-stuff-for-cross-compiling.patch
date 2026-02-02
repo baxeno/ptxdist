@@ -1,0 +1,64 @@
+From: Michael Olbrich <m.olbrich@pengutronix.de>
+Date: Mon, 20 Nov 2023 10:09:15 +0100
+Subject: [PATCH] HACK: don't do magic stuff for cross-compiling
+
+ - PTXdist handles sysroot & toolchain prefix
+ - don't force downloading dependencies
+
+Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
+---
+ CMake/ConfigureCrossCompile.cmake | 7 -------
+ CMake/mlpack.cmake                | 2 ++
+ CMakeLists.txt                    | 2 +-
+ 3 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/CMake/ConfigureCrossCompile.cmake b/CMake/ConfigureCrossCompile.cmake
+index 52e69ba0b425..38566a52bb7e 100644
+--- a/CMake/ConfigureCrossCompile.cmake
++++ b/CMake/ConfigureCrossCompile.cmake
+@@ -9,13 +9,6 @@
+ 
+ if (CMAKE_CROSSCOMPILING)
+   include(CMake/crosscompile-arch-config.cmake)
+-  if (NOT CMAKE_SYSROOT AND (NOT TOOLCHAIN_PREFIX))
+-    message(FATAL_ERROR "Neither CMAKE_SYSROOT nor TOOLCHAIN_PREFIX are set; please set both of them and try again.")
+-  elseif(NOT CMAKE_SYSROOT)
+-    message(FATAL_ERROR "Cannot configure: CMAKE_SYSROOT must be set when performing cross-compiling!")
+-  elseif(NOT TOOLCHAIN_PREFIX)
+-    message(FATAL_ERROR "Cannot configure: TOOLCHAIN_PREFIX must be set when performing cross-compiling!")
+-  endif()
+ 
+   # Now make sure that we can still compile a simple test program.
+   # (This ensures we didn't add any bad CXXFLAGS.)
+diff --git a/CMake/mlpack.cmake b/CMake/mlpack.cmake
+index 2b2ebb8ebadd..fcb85d991137 100644
+--- a/CMake/mlpack.cmake
++++ b/CMake/mlpack.cmake
+@@ -778,12 +778,14 @@ macro(find_mlpack)
+     set(MLPACK_INCLUDE_DIRS ${MLPACK_INCLUDE_DIRS} ${STB_IMAGE_INCLUDE_DIR})
+   endif()
+ 
++  if (NOT MLPACK_DONT_FIND_MLPACK)
+   find_mlpack_internal()
+   if (MLPACK_FOUND)
+     set(MLPACK_INCLUDE_DIRS ${MLPACK_INCLUDE_DIRS} ${MLPACK_INCLUDE_DIR})
+   else()
+     message(FATAL_ERROR "mlpack not found!")
+   endif()
++  endif()
+ 
+   mark_as_advanced(MLPACK_INCLUDE_DIR)
+   mark_as_advanced(MLPACK_INCLUDE_DIRS)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 32ecf827f937..c391f8c3553e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -248,7 +248,7 @@ if (USE_SYSTEM_STB)
+ endif ()
+ 
+ set(MLPACK_DONT_FIND_MLPACK 1)
+-if (CMAKE_CROSSCOMPILING OR DOWNLOAD_DEPENDENCIES)
++if (DOWNLOAD_DEPENDENCIES)
+   fetch_mlpack(ON)
+ else()
+   find_mlpack()

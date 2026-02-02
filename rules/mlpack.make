@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_MLPACK) += mlpack
 #
 # Paths and names
 #
-MLPACK_VERSION		:= 4.2.1
-MLPACK_MD5		:= e1211d743ae36ec997393ee37da8bd47
+MLPACK_VERSION		:= 4.7.0
+MLPACK_MD5		:= 956c938015da6a8b9cee8df7d6f0e708
 MLPACK			:= mlpack-$(MLPACK_VERSION)
 MLPACK_SUFFIX		:= tar.gz
 MLPACK_URL		:= http://mlpack.org/files/$(MLPACK).$(MLPACK_SUFFIX)
@@ -23,7 +23,7 @@ MLPACK_SOURCE		:= $(SRCDIR)/$(MLPACK).$(MLPACK_SUFFIX)
 MLPACK_DIR		:= $(BUILDDIR)/$(MLPACK)
 MLPACK_LICENSE		:= BSD-3-Clause
 MLPACK_LICENSE_FILES	:= \
-	file://COPYRIGHT.txt;md5=da8e2867343cf541d8497084c566817e
+	file://COPYRIGHT.txt;md5=d7a7afa772d25480cab8fd1de9125409
 
 # ----------------------------------------------------------------------------
 # Prepare
@@ -54,7 +54,9 @@ MLPACK_CONF_OPT	:=  \
 	-DMATHJAX=OFF \
 	-DPROFILE=OFF \
 	-DTEST_VERBOSE=OFF \
-	-DUSE_OPENMP=ON
+	-DUSE_OPENMP=ON \
+	\
+	-DMANUAL_ARCH=TRUE
 
 # ----------------------------------------------------------------------------
 # Target-Install
