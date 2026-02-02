@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_WEBSOCAT) += websocat
 #
 # Paths and names
 #
-WEBSOCAT_VERSION	:= 1.11.0
-WEBSOCAT_MD5		:= 2a43004dc1c256119089994b5ddb414b
+WEBSOCAT_VERSION	:= 1.14.1
+WEBSOCAT_MD5		:= ce27026b7ae315aa1675f303ee6e68a3
 WEBSOCAT		:= websocat-$(WEBSOCAT_VERSION)
 WEBSOCAT_SUFFIX		:= tar.gz
 WEBSOCAT_URL		:= https://github.com/vi/websocat/archive/refs/tags/v${WEBSOCAT_VERSION}.$(WEBSOCAT_SUFFIX)
