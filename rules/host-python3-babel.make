@@ -24,37 +24,13 @@ HOST_PYTHON3_BABEL_DIR			:= $(HOST_BUILDDIR)/$(HOST_PYTHON3_BABEL)
 HOST_PYTHON3_BABEL_LICENSE		:= BSD-3-Clause
 HOST_PYTHON3_BABEL_LICENSE_FILES	:= file://LICENSE;md5=1b3f4650099e6d6a73e5a7fc8774ff18
 
-
 HOST_PYTHON3_BABEL_CLDR_VERSION		:= 33
 HOST_PYTHON3_BABEL_CLDR_MD5		:= 39bf16711836c23e386189c3cbd2f344
 HOST_PYTHON3_BABEL_CLDR_URL		:= https://unicode.org/Public/cldr/$(HOST_PYTHON3_BABEL_CLDR_VERSION)/core.zip
 HOST_PYTHON3_BABEL_CLDR_SOURCE		:= $(SRCDIR)/cldr-core-$(HOST_PYTHON3_BABEL_CLDR_VERSION).0.zip
 HOST_PYTHON3_BABEL_CLDR_DIR		:= $(HOST_PYTHON3_BABEL_DIR)/cldr
 
-# ----------------------------------------------------------------------------
-# Get
-# ----------------------------------------------------------------------------
-
-$(STATEDIR)/host-python3-babel.get:
-	@$(call targetinfo)
-	@$(call world/get, HOST_PYTHON3_BABEL)
-	@$(call world/check_src, HOST_PYTHON3_BABEL)
-	@$(call world/get, HOST_PYTHON3_BABEL_CLDR)
-	@$(call world/check_src, HOST_PYTHON3_BABEL_CLDR)
-	@$(call touch)
-
-
-# ----------------------------------------------------------------------------
-# Extract
-# ----------------------------------------------------------------------------
-
-$(STATEDIR)/host-python3-babel.extract:
-	@$(call targetinfo)
-	@$(call extract, HOST_PYTHON3_BABEL)
-	@$(call patchin, HOST_PYTHON3_BABEL)
-	@$(call extract, HOST_PYTHON3_BABEL_CLDR)
-	@$(call touch)
-
+HOST_PYTHON3_BABEL_PARTS		+= HOST_PYTHON3_BABEL_CLDR
 
 # ----------------------------------------------------------------------------
 # Prepare
@@ -68,6 +44,5 @@ $(STATEDIR)/host-python3-babel.prepare:
 		$(HOSTPYTHON3) scripts/import_cldr.py $(HOST_PYTHON3_BABEL_CLDR_DIR))
 	@$(call world/prepare, HOST_PYTHON3_BABEL)
 	@$(call touch)
-
 
 # vim: syntax=make
