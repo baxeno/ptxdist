@@ -1,4 +1,6 @@
-## SECTION=networking
+## SECTION=staging
+## old section:
+### SECTION=networking
 
 menuconfig DUMP1090FA
 	tristate
@@ -7,3 +9,7 @@ menuconfig DUMP1090FA
 	select NCURSES
 	help
 	  FlightAware MODE-S/ADS-B decoder.
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Not well maintained in PTXist. Fails to build with gcc 15.
+	  Needs updating and build fix.
