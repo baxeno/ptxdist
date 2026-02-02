@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_PAHO_MQTT_C) += paho-mqtt-c
 #
 # Paths and names
 #
-PAHO_MQTT_C_VERSION	:= 1.3.12
-PAHO_MQTT_C_MD5		:= cc71dd5243d9fd2db6b0369be661a5c9
+PAHO_MQTT_C_VERSION	:= 1.3.15
+PAHO_MQTT_C_MD5		:= c47850a0a3982d28af33690a8ffdd619
 PAHO_MQTT_C		:= paho.mqtt.c-$(PAHO_MQTT_C_VERSION)
 PAHO_MQTT_C_SUFFIX	:= tar.gz
 PAHO_MQTT_C_URL		:= https://github.com/eclipse/paho.mqtt.c/archive/v$(PAHO_MQTT_C_VERSION).$(PAHO_MQTT_C_SUFFIX)
