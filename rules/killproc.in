@@ -1,10 +1,16 @@
-## SECTION=shell_and_console
+## SECTION=staging
+## old section:
+### SECTION=shell_and_console
 
 menuconfig KILLPROC
 	tristate "killproc                      "
 	help
 	  Utilities for starting and stopping of programs
 	  (Werner Fink's killproc package)
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream seems to be dead, unmaintained in PTXist. Fails to build
+	  with gcc 15.
 
 config KILLPROC_CHECKPROC
 	bool
