@@ -1,4 +1,6 @@
-## SECTION=networking
+## SECTION=staging
+## old section:
+### SECTION=networking
 config INADYN
 	tristate
 	prompt "inadyn"
@@ -7,3 +9,5 @@ config INADYN
 	  To configure this tool use your own projectroot/etc/inadyn.conf file.
 	  You can use the generic one coming with ptxdist as a template.
 
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream is gone, unmaintained in PTXist. Fails to build with gcc 15.
