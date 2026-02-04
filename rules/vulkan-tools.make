@@ -14,8 +14,8 @@ PACKAGES-$(PTXCONF_VULKAN_TOOLS) += vulkan-tools
 #
 # Paths and names
 #
-VULKAN_TOOLS_VERSION	:= 1.4.335.0
-VULKAN_TOOLS_MD5	:= c286deb75acc7aed34eb3747d2bac513
+VULKAN_TOOLS_VERSION	:= 1.4.341.0
+VULKAN_TOOLS_MD5	:= a3ac7e420e7f8e5d4c3cf078da9447a1
 VULKAN_TOOLS		:= vulkan-tools-$(VULKAN_TOOLS_VERSION)
 VULKAN_TOOLS_SUFFIX	:= tar.gz
 VULKAN_TOOLS_URL	:= https://github.com/KhronosGroup/Vulkan-Tools/archive/vulkan-sdk-$(VULKAN_TOOLS_VERSION).$(VULKAN_TOOLS_SUFFIX)
