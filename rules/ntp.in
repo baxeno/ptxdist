@@ -184,6 +184,3 @@ config NTP_NTPTIME
 	  variables.
 
 endif
-
-comment "NTP conflicts with OpenNTPD"
-	depends on NTP && OPENNTPD
