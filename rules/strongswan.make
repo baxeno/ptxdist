@@ -230,6 +230,7 @@ STRONGSWAN_CONF_OPT	:= \
 	--with-ipseclibdir=/usr/lib \
 	--with-systemdsystemunitdir=/usr/lib/systemd/system
 
+STRONGSWAN_CFLAGS	:= -Wno-incompatible-pointer-types
 STRONGSWAN_LDFLAGS	:= -Wl,-rpath,/usr/lib/plugins
 
 # ----------------------------------------------------------------------------
