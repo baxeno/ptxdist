@@ -1,4 +1,6 @@
-## SECTION=test_suites
+## SECTION=staging
+## old section:
+### SECTION=test_suites
 
 config LMBENCH
 	tristate
@@ -8,3 +10,6 @@ config LMBENCH
 	prompt "lmbench"
 	help
 	  Various tools for performance analysis
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Upstream dead and fails to build with gcc 15.
