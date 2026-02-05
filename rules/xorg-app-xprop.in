@@ -1,4 +1,6 @@
-## SECTION=multimedia_xorg_app
+## SECTION=staging
+## old section:
+### SECTION=multimedia_xorg_app
 
 config XORG_APP_XPROP
 	tristate
@@ -7,3 +9,6 @@ config XORG_APP_XPROP
 	help
 	  The xprop utility is for displaying window and font
 	  properties in an X server.
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Unmaintained in PTXist. Fails to build with gcc 15.
