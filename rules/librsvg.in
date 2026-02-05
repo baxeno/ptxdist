@@ -9,7 +9,6 @@ menuconfig LIBRSVG
 	select LIBXML2
 	select LIBXML2_PUSH
 	select PANGO
-	select LIBGSF	if LIBRSVG_SVGZ
 	help
 	  AX-based renderer library for SVG files
 
@@ -26,7 +25,8 @@ config LIBRSVG_PIXBUF_LOADER
 
 config LIBRSVG_SVGZ
 	bool
-	depends on STAGING
+	# needs libgsf
+	depends on BROKEN
 	prompt "svgz support"
 	help
 	  Adds support for the ompressed Scalable Vector Graphics
