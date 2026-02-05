@@ -1,8 +1,8 @@
 From: Michael Olbrich <m.olbrich@pengutronix.de>
-Date: Fri, 7 Feb 2025 10:47:33 +0100
+Date: Thu, 5 Feb 2026 22:55:00 +0100
 Subject: [PATCH] pppoe_noads
 
-Imported from ppp_2.5.1-1+1.debian.tar.xz
+Imported from ppp_2.5.2-1+1.2.debian.tar.xz
 
 Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---
