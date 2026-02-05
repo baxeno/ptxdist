@@ -1,4 +1,6 @@
-## SECTION=networking
+## SECTION=staging
+## old section:
+### SECTION=networking
 menuconfig INETUTILS
 	tristate
 	prompt "inetutils                     "
@@ -12,6 +14,10 @@ menuconfig INETUTILS
 	  * A tftp client and server.
 	  * And much more...
 	  These are improved versions of programs originally from BSD.
+
+	  STAGING: remove in PTXdist 2027.03.0
+	  Unmaintained in PTXist. Fails to build with gcc 15. Needs updating to new
+	  version.
 
 if INETUTILS
 
