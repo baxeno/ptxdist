@@ -23,5 +23,6 @@ config MINICOM_DEFCONFIG
 
 config MINICOM_KERMIT
 	bool
+	depends on STAGING
 	prompt "ckermit support"
 endif
