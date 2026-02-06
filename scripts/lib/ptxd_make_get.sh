@@ -314,7 +314,7 @@ ptxd_make_get_git_archive() {
 	    ptxd_make_serialize_put
 	    ptxd_bailout "git: collecting submodules failed! Submodule data is incomplete!"
 	fi
-    fi
+    fi &&
 
     for key in "${!urls[@]}"; do
 	echo "${PROMPT}git: found submodule ${paths[${key}]} with commit ${commits[${key}]}"
@@ -434,10 +434,10 @@ ptxd_make_get_git() {
 	    mv "${temp_file}" "${path}"
 	fi
     fi
-    ptxd_make_serialize_put
+    ptxd_make_serialize_put &&
     if ! ptxd_make_get_need_commit; then
 	return
-    fi
+    fi &&
     if commit="$(git --git-dir="${mirror}" rev-parse "${tag}^{}" 2>/dev/null)"; then
 	echo "${commit}" > "${path}.commit"
     fi
