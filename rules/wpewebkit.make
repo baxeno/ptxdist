@@ -129,6 +129,7 @@ $(STATEDIR)/wpewebkit.targetinstall:
 
 	@$(call install_tree, wpewebkit, 0, 0, -, /usr/libexec/wpe-webkit-2.0)
 	@$(call install_tree, wpewebkit, 0, 0, -, /usr/lib/wpe-webkit-2.0)
+	@$(call install_tree, wpewebkit, 0, 0, -, /usr/share/wpe-webkit-2.0)
 
 ifdef PTXCONF_WPEWEBKIT_QT
 	@$(call install_tree, wpewebkit, 0, 0, -, /usr/lib/qt5/qml/org/wpewebkit)
