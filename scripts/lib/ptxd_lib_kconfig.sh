@@ -470,33 +470,36 @@ ptxd_kconfig_update_config() {
 	ptxd_kconfig_save_config "${target_config}" "${config}" &&
 	echo
     else
+	local base_md5 target_md5
 	local tmp="$(mktemp "${PTXDIST_TEMPDIR}/config.XXXXXX")"
 	set -- $(md5sum "${base_config}")
-	echo "${1}" > "${tmp}" &&
+	base_md5="${1}" &&
 	set -- $(md5sum "${target_config}") &&
-	echo "${1}" >> "${tmp}" &&
-	sort "${base_config}" > "${tmp}.base" &&
-	sort "${target_config}" > "${tmp}.new" &&
-	# take any new lines and sort by option name
-	diff "${tmp}.base" "${tmp}.new" | \
-	    sed -n 's/^> \(\(# \)\?[A-Z]*_\)/\1/p' | \
-	    sed 's/^# \(.*\) is not set$/\1=n/' >> "${tmp}.tmp" &&
-	# handle all removed symbols
-	diff "${tmp}.base" "${tmp}.new" | \
-	    sed -n 's/^< \(# \)\?\([A-Z]*_[^= ]*\)[= ].*$/\2/p' | \
-	    while read sym; do
-		if ! grep -q "^${sym}=" "${tmp}.tmp"; then
-		    echo "${sym}=u" >> "${tmp}.tmp"
-		fi
-	    done
-	sort "${tmp}.tmp" | \
-	    sed -e 's/^\([^=]*\)=n$/# \1 is not set/' \
-		-e 's/^\([^=]*\)=u$/# \1 is undefined/' \
-		>> "${tmp}" &&
-	if [ $(wc -l < "${tmp}") -eq 1 ] && ! cmp -s "${base_config}" "${target_config}"; then
-	    echo "# ptxdist: comment and sorting changes only" >> "${tmp}"
-	fi
-	if [ $(wc -l < "${tmp}") -gt 1 ]; then
+	target_md5="${1}" &&
+	if [ "${base_md5}" != "${target_md5}" ]; then
+	    echo "${base_md5}" > "${tmp}" &&
+	    echo "${target_md5}" >> "${tmp}" &&
+	    sort "${base_config}" > "${tmp}.base" &&
+	    sort "${target_config}" > "${tmp}.new" &&
+	    # take any new lines and sort by option name
+	    diff "${tmp}.base" "${tmp}.new" | \
+		sed -n 's/^> \(\(# \)\?[A-Z]*_\)/\1/p' | \
+		sed 's/^# \(.*\) is not set$/\1=n/' >> "${tmp}.tmp" &&
+	    # handle all removed symbols
+	    diff "${tmp}.base" "${tmp}.new" | \
+		sed -n 's/^< \(# \)\?\([A-Z]*_[^= ]*\)[= ].*$/\2/p' | \
+		while read sym; do
+		    if ! grep -q "^${sym}=" "${tmp}.tmp"; then
+			echo "${sym}=u" >> "${tmp}.tmp"
+		    fi
+		done
+	    sort "${tmp}.tmp" | \
+		sed -e 's/^\([^=]*\)=n$/# \1 is not set/' \
+		    -e 's/^\([^=]*\)=u$/# \1 is undefined/' \
+		    >> "${tmp}" &&
+	    if [ "$(wc -l < "${tmp}")" -eq 2 ]; then
+		echo "# ptxdist: comment and sorting changes only" >> "${tmp}"
+	    fi
 	    ptxd_kconfig_save_config "${target_config}" "${config}" &&
 	    ptxd_kconfig_save_config "${tmp}" "${config}.diff" &&
 	    echo
